@@ -1,0 +1,37 @@
+local parent = script.parent
+local spawnlocation = workspace.Lobby.SpawnLocation
+local debouncing = {}
+local confetes:Folder = parent.confetes
+local players = game:GetService("Players")
+
+parent.Touched:Connect(function(hit)
+	local playerName = hit.parent.name
+
+	if debouncing[playerName] then
+			return
+	end
+
+	debouncing[playerName] = true
+
+	local character:Model = hit.parent
+	if not character then
+			return
+	end
+
+	local player = players:GetPlayerFromCharacter(character)
+	if not player then
+			return
+	end
+
+	local primaryParty = character.PrimaryPart
+
+	for _, confete in confetes:GetChildren() do
+			local particleEmiter = Instance.new("ParticleEmitter")
+			particleEmiter.Parent = confete
+	end
+
+	delay(5, function()
+		primaryParty.CFrame = spawnlocation.CFrame * CFrame.new(0, 15, 0)
+			debouncing[playerName] = false
+	end)
+end)
