@@ -1,0 +1,31 @@
+local parent = script.parent
+local debouncing = {}
+
+parent.Touched:Connect(function(hit)
+  local playerName = hit.parent.name
+  
+  if debouncing[playerName] then
+    return
+  end
+  
+  --Inicia o debouncing
+  debouncing[playerName] = true
+  
+  local character = hit.parent
+  if not character then
+    return
+  end
+  
+  local humanoid:Humanoid = character:FindFirstChild("Humanoid")
+  if not humanoid then
+    return
+  end
+  
+  humanoid.Health = 0 
+  --or humanoid.health -= 100
+  delay(1, function()
+    debouncing = false
+   end)
+end)
+  
+  
