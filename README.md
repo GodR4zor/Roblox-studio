@@ -7,3 +7,8 @@
 ## Parkour game
 
 [Parkour Game](https://www.roblox.com/games/12780675837/Parkour-Game-V2)
+
+#Desafio-Roblox-3
+## Zombies & Bombs
+
+[Zombies & Bombs](https://www.roblox.com/games/12930779680/Zombies-Bombs)
